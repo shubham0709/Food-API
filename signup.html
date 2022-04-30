@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/signup.css">
+    <link rel="stylesheet" href="./style/navbar.css">
+    <style>
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            border: 5px solid black;
+            border-radius: 20px;
+            height: auto;
+            padding-bottom: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            margin: auto;
+            padding-top: 50px;
+            gap: 20px;
+        }
+
+        input {
+            border: 2px solid rgb(34, 32, 163);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+        }
+
+        #submit {
+            width: 50%;
+            background-color: white;
+            border: 2px solid red;
+            margin: auto;
+        }
+
+        #submit:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <form action="" id="form">
+            <input required id="email" type="text" placeholder="Enter Email">
+            <input required id="name" type="text" placeholder="Enter Name">
+            <input required id="password" type="text" placeholder="Enter Password">
+            <input required type="submit" id="submit">
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="./script/signup.js" type="module"></script>
+<script>
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let form = document.getElementById("form");
+    let signup = () => {
+        event.preventDefault();
+        let obj = {
+            name: form.name.value,
+            email: form.email.value,
+            password: form.password.value
+        }
+        users.push(obj);
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+    form.addEventListener("submit", signup);
+</script>

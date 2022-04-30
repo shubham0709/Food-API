@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+#append_meal {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+
+img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+h2,
+h3 {
+    text-align: center;
+}
+.meal_card {
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 2px 8px 0px;
+    padding-bottom: 20px;
+}

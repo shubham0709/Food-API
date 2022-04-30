@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/login.css">
+    <link rel="stylesheet" href="./style/navbar.css">
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <h1 id="user">Shubham Barore</h1>
+    <div class="container">
+        <form action="" id="form">
+            <input id="email" type="text" placeholder="Enter Email">
+            <input id="password" type="text" placeholder="Enter Password">
+            <input type="submit" id="submit">
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="./script/login.js" type="module"></script>
+<script>
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let form = document.getElementById("form");
+    let login = () => {
+        event.preventDefault();
+        loginEmail = form.email.value,
+            loginPassword = form.password.value
+
+        let check = false;
+        users.forEach(x => {
+            if (x.email == loginEmail && x.password == loginPassword) {
+                check = true;
+                alert("Successfully logged in");
+                let k = document.getElementById("user");
+                k.innerText = x.name;
+                k.style.display = "block";
+            }
+        })
+
+        if (!check) {
+            alert("Invalid Credentials");
+        }
+    }
+    form.addEventListener("submit", login);
+</script>
